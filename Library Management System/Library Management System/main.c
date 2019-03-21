@@ -9,7 +9,7 @@ void deletenode();
 void searchnode();
 void view();
 int menu();
-//hello//hi
+
 struct books
 {
 	int serialnumber, studentid;
