@@ -35,10 +35,10 @@ void insertnode()//inserting node
 	scanf_s("%d", &temp->studentid);
 	printf("Student name");
 	fflush(stdin);
-	gets(temp->issuedby);
+	fgets(temp->issuedby,20,stdin);
 	printf("\nEnter book name");
 	fflush(stdin);
-	gets(temp->bookname);
+	fgets(temp->bookname,20,stdin);
 	temp->link = NULL;
 	if (start == NULL)
 	{
@@ -57,7 +57,7 @@ void insertnode()//inserting node
 
 void searchnode()//linearsearch
 {
-	//seraching from serial of book
+	//seraching from serial of book\\jjiouh
 	struct books *t;
 	int sno;
 	t = start;
@@ -114,10 +114,10 @@ void deletenode()//deleting books
 		printf("No book with serial number %d is present in the database\n", sno);
 		return;
 	}
-	prev->link = temp->link;
+	//prev->link = temp->link;
 	//error!!^
 	free(temp);//freeing memory
-	free(prev);//freeing memory
+	//free(prev);//freeing memory
 }
 void view()//display database
 {
@@ -137,7 +137,7 @@ void view()//display database
 		printf("\n");
 		while (node != NULL)
 		{
-			printf("%d\t\t", node->serialnumber);
+			printf("\t%d", node->serialnumber);
 			printf("%d\t", node->studentid);
 			printf("%s\t", node->issuedby);
 			printf("%s\t", node->bookname);
