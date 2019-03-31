@@ -57,7 +57,7 @@ void insertnode()//inserting node
 
 void searchnode()//linearsearch
 {
-	//seraching from serial of book\\jjiouh
+	//seraching from serial of book
 	struct books *t;
 	int sno;
 	t = start;
