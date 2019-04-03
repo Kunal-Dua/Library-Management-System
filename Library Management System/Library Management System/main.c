@@ -121,13 +121,14 @@ void deletenode()//deleting books/node
 	else if (start->serialnumber == sno)//node next to start
 	{
 		viewdel = start;
-		printf("\nDeleted book serialnumber = %d\n", viewdel->serialnumber);
+		printf("\nBook with serialnumber %d retured\n", viewdel->serialnumber);
 		del = start;
 		start = start->link;
 		free(del);//freeing memory
 		return 0;
 	}
 	temp = start;
+	prev = temp;
 	while (temp != NULL && temp->serialnumber != sno)//looking for previous node of node to be deleted to deleted
 	{
 		prev = temp;
@@ -138,10 +139,10 @@ void deletenode()//deleting books/node
 		printf("No book with serial number %d is present in the database\n", sno);
 		return;
 	}
-	//prev->link= temp->link;
-	//error!!^
+	prev->link= temp->link;
 	free(temp);//freeing memory
-	//free(prev);//freeing memory
+	free(prev);//freeing memory
+	printf("Book retured successfully\n");
 }
 void view()//display database
 {
