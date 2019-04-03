@@ -31,16 +31,17 @@ void insertnode()//inserting node
 	printf("Enter book serial number");
 	scanf_s("%d", &temp->serialnumber);
 	fflush(stdin);
-	printf("\nEnter student ID");
+	printf("Enter student ID");
 	scanf_s("%d", &temp->studentid);
 	printf("Student name ");
 	fflush(stdin);
 	scanf_s("\n");
-	scanf("%s", &temp->issuedby);
+	gets(temp->issuedby);
 	printf("Enter book name ");
 	fflush(stdin);
 	scanf_s("\n");
-	scanf("%s", &temp->bookname);
+	gets(temp->bookname);
+	printf("\nPress Anything to continue\n");
 	temp->link = NULL;
 	if (start == NULL)
 	{
@@ -139,10 +140,10 @@ void view()//display database
 		printf("\n");
 		while (node != NULL)
 		{
-			printf("\t%d", node->serialnumber);
-			printf("%d\t", node->studentid);
-			printf("%s\t", node->issuedby);
-			printf("%s\t", node->bookname);
+			printf("%d\t", node->serialnumber);
+			printf("\t%d\t", node->studentid);
+			printf("\t%s\t", node->issuedby);
+			printf("\t%s\t", node->bookname);
 			printf("\n");
 			node = node->link;
 		}
@@ -192,11 +193,11 @@ int main()
 		case 5:
 			printf("Exit");
 			printf("\nThank You for visting\n");
-			printf("Press Anything to continue\n");
+			//printf("Press Anything to continue\n");
 			exit(0);
 		default:
 			printf("Wrong choice\n");
-			continue;
+			exit(1);
 		}
 		_getch();
 		system("cls");
