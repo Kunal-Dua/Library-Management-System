@@ -116,7 +116,7 @@ void deletenode()//deleting books/node
 	if (start == NULL)//no book in database
 	{
 		printf("No books are in the system\n");
-		return;
+		return 0;
 	}
 	else if (start->serialnumber == sno)//node next to start
 	{
@@ -125,6 +125,7 @@ void deletenode()//deleting books/node
 		del = start;
 		start = start->link;
 		free(del);//freeing memory
+		return 0;
 	}
 	temp = start;
 	while (temp != NULL && temp->serialnumber != sno)//looking for previous node of node to be deleted to deleted
