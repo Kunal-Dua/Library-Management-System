@@ -160,7 +160,7 @@ int menu()//choices
 		printf("Return book\t\t   Enter 2\n");
 		printf("Search for a book\t   Enter 3\n");
 		printf("Display all issused books  Enter 4\n");
-		printf("To exit/t\t\t   Enter 5\n");
+		printf("To exit\t\t     Enter 5\n");
 		scanf_s("%d", &choice);
 		flag = 0;
 		if (choice < 0 && choice>5)
