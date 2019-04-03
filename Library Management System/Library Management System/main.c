@@ -28,10 +28,10 @@ void insertnode()//inserting node
 	struct books*temp, *t;
 	temp = createnode();
 	printf("Enter information about the book\n");
-	printf("Enter book serial number");
+	printf("Enter book serial number ");
 	scanf_s("%d", &temp->serialnumber);
 	fflush(stdin);
-	printf("Enter student ID");
+	printf("Enter student ID ");
 	scanf_s("%d", &temp->studentid);
 	printf("Student name ");
 	fflush(stdin);
@@ -95,25 +95,23 @@ void searchnode()//linearsearch
 				printf("Student Name\t");
 				printf("Book name\t");
 				printf("\n");
-				printf("%d\t\t", t->serialnumber);
-				printf("%d\t", t->studentid);
-				printf("%s\t", t->issuedby);
-				printf("%s\t", t->bookname);
+				printf("\t%d\t", t->serialnumber);
+				printf("\t%d\t", t->studentid);
+				printf("\t%s\t", t->issuedby);
+				printf("\t%s\t", t->bookname);
 				printf("\n");
+				return 0;
 			}
-			else
-			{
-				printf("Search unsuccessfull Book not found\n");
-				t = t->link;
-			}
+			t = t->link;
 		}
+		printf("Search unsuccessfull Book not found\n");
 	}
 }
 void deletenode()//deleting books/node
 {
 	struct books *del, *viewdel, *prev, *temp;
 	int sno;
-	printf("Enter Book serial number which you want to delete");
+	printf("Enter Book serial number which you want to return");
 	scanf_s("%d", &sno);
 	if (start == NULL)//no book in database
 	{
