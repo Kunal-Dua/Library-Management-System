@@ -64,6 +64,11 @@ void searchnode()//linearsearch
 	struct books *t;
 	int sno;
 	t = start;
+	if (start==NULL)
+	{
+		printf("No books in the system\n");
+		return 0;
+	}
 	printf("Enter Serial number book");
 	scanf_s("%d", &sno);
 	while (t->link != NULL)
@@ -84,6 +89,7 @@ void searchnode()//linearsearch
 		else
 		{
 			printf("Search unsuccessfull Book not found\n");
+			t = t->link;
 		}
 	}
 }
@@ -151,25 +157,15 @@ void view()//display database
 }
 int menu()//choices
 {
-	int choice, flag = 1;
-	while (flag)//safe guard
-	{
-		printf("Welcome to Kunal Libary Managment System\n");
-		printf("Enter your choice\n");
-		printf("To issue book\t\t   Enter 1\n");
-		printf("Return book\t\t   Enter 2\n");
-		printf("Search for a book\t   Enter 3\n");
-		printf("Display all issused books  Enter 4\n");
-		printf("To exit\t\t     Enter 5\n");
-		scanf_s("%d", &choice);
-		flag = 0;
-		if (choice < 0 && choice>5)
-		{
-			flag = 1;
-			printf("Wrong choice\n");
-			printf("Do again\n");
-		}
-	}
+	int choice;
+	printf("Welcome to Kunal Libary Managment System\n");
+	printf("Enter your choice\n");
+	printf("To issue book\t\t   Enter 1\n");
+	printf("Return book\t\t   Enter 2\n");
+	printf("Search for a book\t   Enter 3\n");
+	printf("Display all issused books  Enter 4\n");
+	printf("To exit\t\t\t   Enter 5\n");
+	scanf_s("%d", &choice);
 	return choice;
 }
 int main()
@@ -191,9 +187,7 @@ int main()
 			view();
 			break;
 		case 5:
-			printf("Exit");
 			printf("\nThank You for visting\n");
-			//printf("Press Anything to continue\n");
 			exit(0);
 		default:
 			printf("Wrong choice\n");
