@@ -28,17 +28,20 @@ void insertnode()//inserting node
 	struct books*temp, *t;
 	temp = createnode();
 	printf("Enter information about the book\n");
-	printf("Enter book serial number");
+	printf("Enter book serial number ");
 	scanf_s("%d", &temp->serialnumber);
 	fflush(stdin);
-	printf("\nEnter student ID");
+	printf("Enter student ID ");
 	scanf_s("%d", &temp->studentid);
-	printf("Student name");
+	printf("Student name ");
 	fflush(stdin);
-	fgets(temp->issuedby,20,stdin);
-	printf("\nEnter book name");
+	scanf_s("\n");
+	gets(temp->issuedby);
+	printf("Enter book name ");
 	fflush(stdin);
-	fgets(temp->bookname,20,stdin);
+	scanf_s("\n");
+	gets(temp->bookname);
+	printf("\nPress Anything to continue\n");
 	temp->link = NULL;
 	if (start == NULL)
 	{
@@ -57,53 +60,75 @@ void insertnode()//inserting node
 
 void searchnode()//linearsearch
 {
-	//seraching from serial of book\\jjiouh
+	//seraching from serial of book
 	struct books *t;
 	int sno;
 	t = start;
+	if (start==NULL)
+	{
+		printf("No books in the system\n");
+		return 0;
+	}
 	printf("Enter Serial number book");
 	scanf_s("%d", &sno);
-	while (t->link != NULL)
+	if (start->link == NULL)
 	{
-		if (sno == t->serialnumber)
+		printf("Serial Number\t");
+		printf("Student ID\t");
+		printf("Student Name\t");
+		printf("Book name\t");
+		printf("\n");
+		printf("%d\t", start->serialnumber);
+		printf("\t%d\t", start->studentid);
+		printf("\t%s\t", start->issuedby);
+		printf("\t%s\t", start->bookname);
+		printf("\n");
+	}
+	else
+	{
+		while (t->link != NULL)
 		{
-			printf("Serial Number\t");
-			printf("Student ID\t");
-			printf("Student Name\t");
-			printf("Book name\t");
-			printf("\n");
-			printf("%d\t\t", t->serialnumber);
-			printf("%d\t", t->studentid);
-			printf("%s\t", t->issuedby);
-			printf("%s\t", t->bookname);
-			printf("\n");
+			if (sno == t->serialnumber)
+			{
+				printf("Serial Number\t");
+				printf("Student ID\t");
+				printf("Student Name\t");
+				printf("Book name\t");
+				printf("\n");
+				printf("\t%d\t", t->serialnumber);
+				printf("\t%d\t", t->studentid);
+				printf("\t%s\t", t->issuedby);
+				printf("\t%s\t", t->bookname);
+				printf("\n");
+				return 0;
+			}
+			t = t->link;
 		}
-		else
-		{
-			printf("Search unsuccessfull Book not found\n");
-		}
+		printf("Search unsuccessfull Book not found\n");
 	}
 }
-void deletenode()//deleting books
+void deletenode()//deleting books/node
 {
 	struct books *del, *viewdel, *prev, *temp;
 	int sno;
-	printf("Enter Book serial number which you want to delete");
+	printf("Enter Book serial number which you want to return");
 	scanf_s("%d", &sno);
 	if (start == NULL)//no book in database
 	{
 		printf("No books are in the system\n");
-		return;
+		return 0;
 	}
 	else if (start->serialnumber == sno)//node next to start
 	{
 		viewdel = start;
-		printf("\nDeleted book serialnumber = %d\n", viewdel->serialnumber);
+		printf("\nBook with serialnumber %d retured\n", viewdel->serialnumber);
 		del = start;
 		start = start->link;
 		free(del);//freeing memory
+		return 0;
 	}
 	temp = start;
+	prev = temp;
 	while (temp != NULL && temp->serialnumber != sno)//looking for previous node of node to be deleted to deleted
 	{
 		prev = temp;
@@ -114,10 +139,10 @@ void deletenode()//deleting books
 		printf("No book with serial number %d is present in the database\n", sno);
 		return;
 	}
-	//prev->link = temp->link;
-	//error!!^
+	prev->link= temp->link;
 	free(temp);//freeing memory
-	//free(prev);//freeing memory
+	free(prev);//freeing memory
+	printf("Book retured successfully\n");
 }
 void view()//display database
 {
@@ -137,10 +162,10 @@ void view()//display database
 		printf("\n");
 		while (node != NULL)
 		{
-			printf("\t%d", node->serialnumber);
-			printf("%d\t", node->studentid);
-			printf("%s\t", node->issuedby);
-			printf("%s\t", node->bookname);
+			printf("%d\t", node->serialnumber);
+			printf("\t%d\t", node->studentid);
+			printf("\t%s\t", node->issuedby);
+			printf("\t%s\t", node->bookname);
 			printf("\n");
 			node = node->link;
 		}
@@ -148,25 +173,15 @@ void view()//display database
 }
 int menu()//choices
 {
-	int choice, flag = 1;
-	while (flag)//safe guard
-	{
-		printf("Welcome to Kunal Libary Managment System\n");
-		printf("Enter your choice\n");
-		printf("To issue book\t\t   Enter 1\n");
-		printf("Return book\t\t   Enter 2\n");
-		printf("Search for a book\t   Enter 3\n");
-		printf("Display all issused books  Enter 4\n");
-		printf("To exit/t\t\t   Enter 5\n");
-		scanf_s("%d", &choice);
-		flag = 0;
-		if (choice < 0 && choice>5)
-		{
-			flag = 1;
-			printf("Wrong choice\n");
-			printf("Do again\n");
-		}
-	}
+	int choice;
+	printf("Welcome to Kunal Libary Managment System\n");
+	printf("Enter your choice\n");
+	printf("To issue book\t\t   Enter 1\n");
+	printf("Return book\t\t   Enter 2\n");
+	printf("Search for a book\t   Enter 3\n");
+	printf("Display all issused books  Enter 4\n");
+	printf("To exit\t\t\t   Enter 5\n");
+	scanf_s("%d", &choice);
 	return choice;
 }
 int main()
@@ -188,13 +203,11 @@ int main()
 			view();
 			break;
 		case 5:
-			printf("Exit");
 			printf("\nThank You for visting\n");
-			printf("Press Anything to continue\n");
 			exit(0);
 		default:
 			printf("Wrong choice\n");
-			continue;
+			exit(1);
 		}
 		_getch();
 		system("cls");
