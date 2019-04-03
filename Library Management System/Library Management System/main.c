@@ -35,10 +35,12 @@ void insertnode()//inserting node
 	scanf_s("%d", &temp->studentid);
 	printf("Student name");
 	fflush(stdin);
-	fgets(temp->issuedby,20,stdin);
+	scanf_s("\n");
+	scanf_s("%s", &temp->issuedby);
 	printf("\nEnter book name");
 	fflush(stdin);
-	fgets(temp->bookname,20,stdin);
+	scanf_s("\n");
+	scanf_s("%s", &temp->bookname);
 	temp->link = NULL;
 	if (start == NULL)
 	{
@@ -114,7 +116,7 @@ void deletenode()//deleting books
 		printf("No book with serial number %d is present in the database\n", sno);
 		return;
 	}
-	//prev->link = temp->link;
+	//prev->link= temp->link;
 	//error!!^
 	free(temp);//freeing memory
 	//free(prev);//freeing memory
