@@ -71,29 +71,45 @@ void searchnode()//linearsearch
 	}
 	printf("Enter Serial number book");
 	scanf_s("%d", &sno);
-	while (t->link != NULL)
+	if (start->link == NULL)
 	{
-		if (sno == t->serialnumber)
+		printf("Serial Number\t");
+		printf("Student ID\t");
+		printf("Student Name\t");
+		printf("Book name\t");
+		printf("\n");
+		printf("%d\t", start->serialnumber);
+		printf("\t%d\t", start->studentid);
+		printf("\t%s\t", start->issuedby);
+		printf("\t%s\t", start->bookname);
+		printf("\n");
+	}
+	else
+	{
+		while (t->link != NULL)
 		{
-			printf("Serial Number\t");
-			printf("Student ID\t");
-			printf("Student Name\t");
-			printf("Book name\t");
-			printf("\n");
-			printf("%d\t\t", t->serialnumber);
-			printf("%d\t", t->studentid);
-			printf("%s\t", t->issuedby);
-			printf("%s\t", t->bookname);
-			printf("\n");
-		}
-		else
-		{
-			printf("Search unsuccessfull Book not found\n");
-			t = t->link;
+			if (sno == t->serialnumber)
+			{
+				printf("Serial Number\t");
+				printf("Student ID\t");
+				printf("Student Name\t");
+				printf("Book name\t");
+				printf("\n");
+				printf("%d\t\t", t->serialnumber);
+				printf("%d\t", t->studentid);
+				printf("%s\t", t->issuedby);
+				printf("%s\t", t->bookname);
+				printf("\n");
+			}
+			else
+			{
+				printf("Search unsuccessfull Book not found\n");
+				t = t->link;
+			}
 		}
 	}
 }
-void deletenode()//deleting books
+void deletenode()//deleting books/node
 {
 	struct books *del, *viewdel, *prev, *temp;
 	int sno;
