@@ -33,14 +33,14 @@ void insertnode()//inserting node
 	fflush(stdin);
 	printf("\nEnter student ID");
 	scanf_s("%d", &temp->studentid);
-	printf("Student name");
+	printf("Student name ");
 	fflush(stdin);
 	scanf_s("\n");
-	scanf_s("%s", &temp->issuedby);
-	printf("\nEnter book name");
+	scanf("%s", &temp->issuedby);
+	printf("Enter book name ");
 	fflush(stdin);
 	scanf_s("\n");
-	scanf_s("%s", &temp->bookname);
+	scanf("%s", &temp->bookname);
 	temp->link = NULL;
 	if (start == NULL)
 	{
